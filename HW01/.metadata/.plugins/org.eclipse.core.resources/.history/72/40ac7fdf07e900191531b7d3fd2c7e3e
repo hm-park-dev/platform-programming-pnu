@@ -1,0 +1,84 @@
+package HW01_01;
+
+import javax.swing.JApplet;
+import javax.swing.JOptionPane;
+
+import java.awt.Graphics;
+import java.util.Random;
+
+public class HW1 extends JApplet {
+	// set face variable
+	public static final int FACE_DIAMETER = 200;
+	public static final int X_FACE = 100;
+	public static final int Y_FACE = 50;
+	public static final int EYE_WIDTH = 10;
+	public static final int EYE_HEIGHT = 20;
+	public static final int X_RIGHT_EYE = 155;
+	public static final int Y_RIGHT_EYE = 100;
+	public static final int X_LEFT_EYE = 230;
+	public static final int Y_LEFT_EYE = Y_RIGHT_EYE;
+	public static final int MOUTH_WIDTH = 100;
+	public static final int MOUTH_HEIGHT = 50;
+	public static final int X_MOUTH = 150;
+	public static final int Y_MOUTH = 160;
+	public static final int MOUTH_START_ANGLE = 180;
+	public static final int MOUTH_EXTENT_ANGLE = 180;
+	
+	//TODO Define global variables
+	static Random random = new Random(); //Create Random object
+	//static int problem = generate(); //Genearte the even number between 4 and 10000
+	static int problem = 12; 
+	int userNumber1;
+	int userNumber2;
+	HW1_goldbach goldbach = new HW1_goldbach(); // Create goldbach object
+	
+	private static int generate() {
+		//TODO Write codes for generate random even number
+		int evenNumber = random.nextInt(9997)+4; // 0+4 ~ 9996+4
+		
+		while(evenNumber%2!=0)		// 짝수가 나올때 까지 random.nextInt() 반복
+		{
+			evenNumber = random.nextInt(9997)+4;
+		}
+		
+		return evenNumber;
+	}
+	
+	public void init() {
+		// 문제 출력 및 입력을 위한 init 함수
+		//TODO Write codes for input
+		setSize(400,300); //Set JApplet size
+		
+		JOptionPane.showMessageDialog(null, "The number is " + problem);
+		
+		String num1String = JOptionPane.showInputDialog("Enter the first number:");
+		userNumber1  = Integer.parseInt(num1String);
+		
+		String num2String = JOptionPane.showInputDialog("Enter the second number:");
+		userNumber2 = Integer.parseInt(num2String);
+		
+	}
+	
+	public void paint(Graphics canvas) {
+		//TODO Write codes for output
+		canvas.drawString("Solution is ", goldbach.primeNum1, goldbach.primeNum2); //Output for solution
+		
+	}
+	
+	public void main(String args[]) {
+		goldbach.setNumber(problem);
+		goldbach.findAnswer(problem);
+		
+		init();
+		
+		if(goldbach.checkAnswer(userNumber1, userNumber2))
+		{
+			System.out.println("answer is " + userNumber1 + " and " + userNumber2);
+		}
+		else
+		{
+			System.out.println("Not Answer!");
+		}
+	}
+}
+

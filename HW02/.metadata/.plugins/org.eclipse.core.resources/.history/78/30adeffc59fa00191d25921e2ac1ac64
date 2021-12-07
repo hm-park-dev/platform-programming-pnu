@@ -1,0 +1,86 @@
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+/*
+ * 0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내는 것
+ * 배열을 통해 모든 입력을 받음
+ * 
+ */
+
+public class HW2 extends JApplet implements ActionListener {
+	//TODO Define global variables you need.
+	public static int LINES = 5;
+	public static int CHAR_PER_LINE = 40;
+	
+	private JTextArea theText;
+	
+	private int compareAns = 0;
+	private String inputString = "";
+	int length = 0;
+	String result;
+	private String input; // 입력 받는 수
+	
+	
+	public void init() {
+		//TODO Write the code for JApplet initialization.
+		setSize(1000, 300);
+		Container contentPane = getContentPane();
+		contentPane.setLayout(new FlowLayout());
+		JLabel instructions = new JLabel("Enter the numbers");
+		contentPane.add(instructions);
+		
+		JButton enterButton = new JButton("Enter");
+		enterButton.addActionListener(this);
+		contentPane.add(enterButton);
+		
+		JButton resultButton = new JButton("Result");
+		resultButton.addActionListener(this);
+		contentPane.add(resultButton);
+		
+		JButton resetButton = new JButton("Reset");
+		resetButton.addActionListener(this);
+		contentPane.add(resetButton);
+		
+		theText = new JTextArea(LINES, CHAR_PER_LINE);
+		theText.setText("");
+		contentPane.add(theText);
+		
+	}
+	public void actionPerformed(ActionEvent e) {
+		//TODO Write the code to process action event.
+		String actionCommand = e.getActionCommand();
+		if(actionCommand.equals("Enter"))
+		{
+			input = theText.getText();
+			if(Integer.parseInt(input) >= 0)
+			{
+				inputString += input;
+				inputString += " ";
+				length++;
+			}
+			theText.setText("");
+
+		}
+		else if(actionCommand.equals("Result"))
+		{
+			theText.setText("Input numbers are: " + inputString + "\nThe largest number is: ");
+			
+		}
+		else if(actionCommand.equals("Reset"))
+		{
+			length = 0;
+			inputString = "";
+			theText.setText("");
+		}
+	}
+	
+	//TODO Write your classes or methods you need.
+	
+}

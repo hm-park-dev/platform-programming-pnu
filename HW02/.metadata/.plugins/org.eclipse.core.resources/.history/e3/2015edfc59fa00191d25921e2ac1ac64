@@ -1,0 +1,15 @@
+
+public class MaximumNumbers {
+	public static String[] makeArray(String _input, int length)
+	{
+		String[] result = new String[length];
+		
+		result = _input.split(" ");
+		for(int i=0; i<result.length; i++)
+		{
+			System.out.print(result[i] + " ");
+		}
+		
+		return result;
+	}
+}

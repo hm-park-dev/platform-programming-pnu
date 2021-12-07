@@ -1,0 +1,54 @@
+package HW01_01;
+
+
+import javax.swing.JApplet;
+import javax.swing.JOptionPane;
+
+import java.awt.Graphics;
+import java.util.Random;
+
+public class HW1 extends JApplet {
+	//TODO Define global variables
+	Random random = new Random(); //Create Random object
+	int problem = generate(); //Genearte the even number between 4 and 10000
+	int userNumber1;
+	int userNumber2;
+	HW1_goldbach goldbach = new HW1_goldbach(); // Create goldbach object
+	
+	private int generate() {
+		//TODO Write codes for generate random even number
+		int evenNumber = random.nextInt(9997)+4; // 0+4 ~ 9996+4
+		
+		while(evenNumber%2!=0)		// 짝수가 나올때 까지 random.nextInt() 반복
+		{
+			evenNumber = random.nextInt(9997)+4;
+		}
+		
+		return evenNumber;
+	}
+	
+	public void init() {
+		// 문제 출력 및 입력을 위한 init 함수
+		//TODO Write codes for input
+		setSize(400,300); //Set JApplet size
+		
+		JOptionPane.showMessageDialog(null, "The number is " + problem);
+		
+		String num1String = JOptionPane.showInputDialog("Enter the first number:");
+		userNumber1  = Integer.parseInt(num1String);
+		
+		String num2String = JOptionPane.showInputDialog("Enter the second number:");
+		userNumber2 = Integer.parseInt(num2String);
+		
+	}
+	
+	public void paint(Graphics canvas) {
+		//TODO Write codes for output
+		canvas.drawString("Solution is ", 10, 20); //Output for solution
+	}
+	
+	public static void main(String args[]) {
+		goldbach.setNumber(problem);
+	}
+}
+

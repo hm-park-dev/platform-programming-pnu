@@ -1,0 +1,18 @@
+package HW01_01;
+
+public class HW1_goldbach {
+	public int evenNumber;
+	public int prime1Num;
+	public int prime2Num;
+	public int subtract;
+	
+	public void findAnswer()
+	{
+		
+	}
+	
+	public void isPrime(int num)
+	{
+		
+	}
+}

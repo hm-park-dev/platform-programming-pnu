@@ -1,0 +1,47 @@
+package HW01_01;
+
+public class HW1_goldbach {
+	public int evenNumber;
+	// prime1Num < prime2Num
+	public int prime1Num;
+	public int prime2Num;
+	public int subtract=evenNumber;
+	
+	public void setNumber(int num)
+	{
+		evenNumber = num;
+	}
+	
+	// 가장 차이가 작은 소수 두 개를 찾는 함수
+	public void findAnswer(int num)	// 2보다 큰 짝수인 num
+	{
+		for(int i=3; i<num/2; i++)
+		{
+			if(isPrime(i)&&isPrime(num-i))	// 두 수가 모두 소수라면
+			{
+				int temp1 = i;
+				int temp2 = num-i;
+				
+				if(temp2-temp1 <= subtract)
+				{
+					prime1Num = temp1;
+					prime2Num = temp2;
+					subtract = prime2Num - prime1Num;
+				}
+			}
+		}
+	}
+	
+	// num이 소수인지 확인하는 함수
+	// return true : num == prime
+	// return false : num != prime
+	public boolean isPrime(int num)
+	{
+		for(int i=2; i<num; i++)
+		{
+			if(num%i==0)
+				return false;
+		}
+		return true;
+	}
+}

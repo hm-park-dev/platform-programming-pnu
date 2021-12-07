@@ -1,0 +1,47 @@
+
+public class MaximumNumbers {
+	// 입력받은 문자열을 나누는 함수
+	public static String[] makeArray(String _input, int length)
+	{
+		String[] result = new String[length];
+		result = _input.split(" ");
+		
+		return result;
+	}
+	
+	// 가장 큰 수를 찾는 함수
+	// return: String
+	// param: String, int
+	
+	public static String findMaximum(String _input, int length)
+	{
+		String result = "";
+		String[] arr = makeArray(_input, length);
+		
+		for(int i=0; i<arr.length-1; i++)
+		{
+			for (int j=0; j<arr.length-1; j++)
+			{
+				if((arr[j]+arr[j+1]).compareTo(arr[j+1]+arr[j])<0) // 위치를 바꿔야함
+				{
+					String temp = arr[j+1];
+					arr[j+1] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}
+		
+		for(int i=0; i<arr.length; i++)
+			System.out.print(i + ": " + arr[i] + ", ");
+		
+		System.out.println("");
+			
+		if(arr[0] == "0")
+		{
+			result = "0";
+		}
+
+		
+		return result;
+	}
+}

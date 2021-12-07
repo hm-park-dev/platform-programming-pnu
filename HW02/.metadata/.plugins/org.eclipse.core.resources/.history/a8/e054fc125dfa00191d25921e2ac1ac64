@@ -1,0 +1,10 @@
+
+public class MaximumNumbersDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str = "6 10 2";
+		String[] result = MaximumNumbers.makeArray(str, 3);
+	}
+
+}

@@ -1,0 +1,11 @@
+
+public class MaximumNumbersDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str = "3 30 34 5 9";
+		String result = MaximumNumbers.findMaximum(str, 5);
+		System.out.println(result);
+	}
+
+}
